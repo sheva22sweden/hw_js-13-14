@@ -1,0 +1,25 @@
+.box {
+  width: 600px;
+  margin: 0 auto;
+  font-family: Arial;
+}
+.box h2{
+  
+  text-align: center;
+}
+
+ul {
+  padding: 20px 30px;
+}
+li{
+    list-style: none;
+}
+#check {
+  margin: 0 auto;
+  display: block;
+  background-color: #cee2f2;
+  width: 325px;
+  height: 55px;
+  border: 2px solid #000;
+  font-size: 16px;
+}

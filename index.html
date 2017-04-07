@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <link rel="stylesheet" href="css/style.css">
+   <script src="https://code.jquery.com/jquery-3.1.0.min.js" 
+  integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" 
+  crossorigin="anonymous"></script>
+  <script src = "js/tmpl.js"></script>
+  <script src = "js/script.js"></script> 
+</head>
+<body>
+
+  <ul id="results">
+  output results here.
+  </ul>
+
+  <!-- Script for template -->
+
+<script type="text/html" id="test_tmpl">
+  <div class="box">
+    <h2 class="title"><%= title %></h2>
+    <% for(var i=0;i<questions.length;i++){%>
+    <li> <%=i+1%>. <%=questions[i]%></li> 
+    <ul>
+      <% for(var j=0;j<answers[i].length;j++){%>
+        <li id =a<%=i%><%=j%>><input type = checkbox id =<%=i%><%=j%>a name = a<%=i%> > <%=answers[i][j]%></li> 
+      <% } %>
+    </ul>
+    <% } %>
+  </div>
+</script>
+
+<!-- Button for checking results -->
+
+<button id = "check">Проверить мои результаты</button>
+
+<!--   Script for checking results -->
+
+<script>
+    $(check).click(function(){
+    var sum=0;
+    $("#results input:checked").each(function(){
+      var code = $(this).attr("id");
+      code = parseInt(code);
+      var q = Math.floor(code/10);
+      var qn = code%10;
+      
+      if (test1.right[q]==qn) {console.log('Верно!'); sum+=1;}
+      else
+        alert('Тест не пройден!');
+      
+      console.log(q+" "+qn);
+    });
+    if (sum == test1.right.length) (alert("Вы успешно прошли тест!"));
+  });
+</script>
+
+</body>
+</html>
