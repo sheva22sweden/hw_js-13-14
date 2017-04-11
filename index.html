@@ -16,46 +16,73 @@
   output results here.
   </ul>
 
+
   <!-- Script for template -->
 
 <script type="text/html" id="test_tmpl">
-  <div class="box">
+  <form class="box" method="post" action="#">
     <h2 class="title"><%= title %></h2>
     <% for(var i=0;i<questions.length;i++){%>
     <li> <%=i+1%>. <%=questions[i]%></li> 
     <ul>
       <% for(var j=0;j<answers[i].length;j++){%>
-        <li id =a<%=i%><%=j%>><input type = checkbox id =<%=i%><%=j%>a name = a<%=i%> > <%=answers[i][j]%></li> 
+        <li id =a<%=i%><%=j%>>
+          <input value="<%=j%>"  type = radio id =<%=i%><%=j%>a name = a<%=i%> >
+          <label for="<%=i%><%=j%>a"> <%=answers[i][j]%> </label>
+        </li> 
       <% } %>
     </ul>
     <% } %>
-  </div>
+    <button type="submit" id = "check">Проверить мои результаты</button>
+  </form>
 </script>
-
-<!-- Button for checking results -->
-
-<button id = "check">Проверить мои результаты</button>
 
 <!--   Script for checking results -->
 
 <script>
-    $(check).click(function(){
-    var sum=0;
-    $("#results input:checked").each(function(){
-      var code = $(this).attr("id");
-      code = parseInt(code);
-      var q = Math.floor(code/10);
-      var qn = code%10;
+$(function() {
+    var sum = 0;
+    $('form').on('submit', function(e) {
+        e.preventDefault();
+  
+        $('#overlay').fadeIn(400, 
+          function(){ 
+            $('#modal_form') 
+              .css('display', 'block')
+              .text('Правильных ответов'+' '+sum)
+              .animate({opacity: 1, top: '50%'}, 200); 
+        });
       
-      if (test1.right[q]==qn) {console.log('Верно!'); sum+=1;}
-      else
-        alert('Тест не пройден!');
-      
-      console.log(q+" "+qn);
-    });
-    if (sum == test1.right.length) (alert("Вы успешно прошли тест!"));
-  });
+        $('#modal_close, #overlay').click( function(){ 
+          $('#modal_form')
+            .animate({opacity: 0, top: '45%'}, 200,
+              function(){ 
+                $(this).css('display', 'none');
+                $('#overlay').fadeOut(400);
+              }
+            );
+
+        for (var i = 0; i < $("#results input:checked").length; i++) {
+          if (test1.right[i] == $($("#results input:checked")[i]).val()) {
+            sum++;
+          }
+        }
+
+        $('form').trigger( 'reset' );
+        });
+      });
+      });
+
 </script>
+
+  <!-- Modal window -->
+
+  <div id="modal_form">
+
+      <span id="modal_close">X</span> 
+      
+</div>
+<div id="overlay"></div>
 
 </body>
 </html>
