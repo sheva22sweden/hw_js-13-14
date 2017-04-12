@@ -23,4 +23,32 @@
     results.innerHTML = tmpl("test_tmpl", test1);
   });
 
+//   var modalWindow = {
 
+//     createButton () {
+//       var modal = modal.querySelector('');
+//       var close = document.createElement('button');
+//       close.classList.add('modal_close');
+//       span.appendChild(document.createTextNode('X'));
+//       document.modal.appendChild(button);
+//     }
+//   };
+
+// modalWindow.createButton();
+
+ $(function (){ 
+    $('#modal_form').append('<p>Меня тут не было!</p>');
+});
+
+
+
+
+
+// $(document).ready(function(){
+//     $("#btn1").click(function(){
+//         $("p").append(" <b>Appended text</b>.");
+//     });
+//     $("#btn2").click(function(){
+//         $("ol").append("<li>Appended item</li>");
+//     });
+// });
