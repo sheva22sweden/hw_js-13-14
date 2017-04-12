@@ -37,18 +37,6 @@
 // modalWindow.createButton();
 
  $(function (){ 
-    $('#modal_form').append('<p>Меня тут не было!</p>');
+    $('#modal_form').append('<p>Правильных ответов</p>');
 });
 
-
-
-
-
-// $(document).ready(function(){
-//     $("#btn1").click(function(){
-//         $("p").append(" <b>Appended text</b>.");
-//     });
-//     $("#btn2").click(function(){
-//         $("ol").append("<li>Appended item</li>");
-//     });
-// });
