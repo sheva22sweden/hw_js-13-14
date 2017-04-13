@@ -40,44 +40,48 @@
 <!--   Script for checking results -->
 
 <script>
-  $(function() {
-    
+$(function() {
     $('form').on('submit', function(e) {
-      var sum = 0;  
-      e.preventDefault();
-       for (var i = 0; i < $("#results input:checked").length; i++) {
-        if (test1.right[i] == $($("#results input:checked")[i]).val()) {
-          sum++;
-        } 
-       };
-        $('form').trigger( 'reset' );
-        $('#overlay').fadeIn(400, 
-          function(){ 
-            $('#modal_form') 
-              .css('display', 'block')
-              .text('Правильных ответов'+' '+sum)
-              .animate({opacity: 1, top: '50%'}, 200); 
-        });
-        
-        $('#modal_close, #overlay').click( function(){ 
-          $('#modal_form')
-            .animate({opacity: 0, top: '45%'}, 200,
-              function(){ 
-                $(this).css('display', 'none');
-                $('#overlay').fadeOut(400);
-                
-              });
-        });
+        e.preventDefault();
+      if ($("input:radio:checked").val()) {
+        var sum = 0;  
+         for (var i = 0; i < $("#results input:checked").length; i++) {
+          if (test1.right[i] == $($("#results input:checked")[i]).val()) {
+            sum++;
+          } 
+         };
+          $('form').trigger( 'reset' );
+          $('#overlay').fadeIn(400, 
+            function(){ 
+              $('#modal_form') 
+                .css('display', 'block')
+                .animate({opacity: 1, top: '50%'}, 200); 
+          });
+          
+          $('#modal_close, #overlay').click( function(){ 
+            $('#modal_form')
+              .animate({opacity: 0, top: '45%'}, 200,
+                function(){ 
+                  $(this).css('display', 'none');
+                  $('#overlay').fadeOut(400);
+                  
+                });
+          });
+          $('#modal_form p').text('Правильных ответов '+sum);
+      }else{
+          alert('Виберете правильные ответы')
+      }
+      
     });
   });
-
 </script>
 
   <!-- Modal window -->
 
   <div  class="modal" id="modal_form">
 
-    <span id="modal_close">X</span>
+    <span id="modal_close"><img src="images/close.png" alt="x"></span>
+    <p></p>
       
 </div>
 <div id="overlay"></div>

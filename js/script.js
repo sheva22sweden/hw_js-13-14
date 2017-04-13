@@ -23,20 +23,5 @@
     results.innerHTML = tmpl("test_tmpl", test1);
   });
 
-//   var modalWindow = {
 
-//     createButton () {
-//       var modal = modal.querySelector('');
-//       var close = document.createElement('button');
-//       close.classList.add('modal_close');
-//       span.appendChild(document.createTextNode('X'));
-//       document.modal.appendChild(button);
-//     }
-//   };
-
-// modalWindow.createButton();
-
- $(function (){ 
-    $('#modal_form').append('<p>Правильных ответов</p>');
-});
 
